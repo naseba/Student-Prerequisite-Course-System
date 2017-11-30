@@ -25,6 +25,17 @@ static public class FileOperations
             throw new NotImplementedException();
         }
     }
+    static public class CoursesFile
+    {
+        static public void AddCourse(Course c)
+        {
+            throw new NotImplementedException();
+        }
+        static public Course GetCourse(string name)
+        {
+            throw new NotImplementedException();
+        }
+    }
     static public class TreeFile
     {
         //Delayed till tree is done
