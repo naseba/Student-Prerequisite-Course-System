@@ -38,7 +38,28 @@ static public class FileOperations
     }
     static public class TreeFile
     {
-        //Delayed till tree is done
+        static public void Write(string[] data)
+        {
+            FileStream file = new FileStream("Tree.txt", FileMode.Append, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(file);
+            foreach(string s in data)
+            {
+                writer.WriteLine(s);
+            }
+            writer.Close();
+        }
+        static public string[] Read()
+        {
+            ArrayList<string> list = new ArrayList<string>();
+            FileStream file = new FileStream("Tree.txt", FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(file);
+            while(!reader.EndOfStream)
+            {
+                list.Append(reader.ReadLine());
+            }
+            reader.Close();
+            return list.ToArray();
+        }
     }
     static public class Users_SubjectsFile
     {
