@@ -4,79 +4,79 @@ public class ArrayList<T>
 {
     //private
     T[] arr;
-    int size;
+    int count;
     int capacity;
-    void Expand()
-    {
-        Resize(capacity * 2);
-    }
     void CheckIndex(int index)
     {
-        if (index >= size || index < 0)
+        if (index >= count || index < 0)
         {
             throw new IndexOutOfRangeException();
         }
     }
     void CheckSizeCapacity()
     {
-        if (size == capacity)
+        if (count == capacity)
         {
-            Expand();
+            Capacity = capacity * 2;
         }
     }
     //public
     public ArrayList()
     {
-        size = 0;
+        count = 0;
         capacity = 5;
         arr = new T[5];
     }
     public ArrayList(int IntialCapacity)
     {
-        size = 0;
+        count = 0;
         capacity = IntialCapacity;
         arr = new T[IntialCapacity];
     }
-    public void Resize(int NewSize)
+    public int Count
     {
-        T[] tmp = new T[NewSize];
-        Array.ConstrainedCopy(arr, 0, tmp, 0, Math.Min(size, NewSize));
-        arr = tmp;
-        capacity = NewSize;
+        get => count;
     }
-    public int Size
+    public int Capacity
     {
-        get => size;
+        get => capacity;
+        set
+        {
+            T[] tmp = new T[value];
+            Array.ConstrainedCopy(arr, 0, tmp, 0, Math.Min(count, value));
+            arr = tmp;
+            capacity = value;
+        }
     }
     public void Append(T value)
     {
         CheckSizeCapacity();
-        arr[size] = value;
-        size++;
+        arr[count] = value;
+        count++;
     }
     public void PopBack()
     {
-        if (size > 0) size--;
+        if (count > 0) count--;
     }
     public void InsertAt(int index, T value)
     {
         CheckIndex(index);
         CheckSizeCapacity();
-        for(int i = index; i < size; i++)
+        for(int i = index; i < count; i++)
         {
             arr[i + 1] = arr[i];
         }
         arr[index] = value;
-        size++;
+        count++;
     }
     public void DeleteAt(int index)
     {
         CheckIndex(index);
-        for (int i = size - 1; i > index; i++)
+        for (int i = count - 1; i > index; i++)
         {
             arr[i - 1] = arr[i];
         }
-        size--;
+        count--;
     }
     public T this[int index]
     {
