@@ -45,6 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\ArrayList.cs" />
+    <Compile Include="DataStructures\SmallContainers.cs" />
+    <Compile Include="FileOperations.cs" />
+    <Compile Include="DataStructures\Tree.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

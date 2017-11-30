@@ -28,13 +28,13 @@ public class ArrayList<T>
         }
     }
     //public
-    ArrayList()
+    public ArrayList()
     {
         size = 0;
         capacity = 5;
         arr = new T[5];
     }
-    ArrayList(int IntialCapacity)
+    public ArrayList(int IntialCapacity)
     {
         size = 0;
         capacity = IntialCapacity;
@@ -43,7 +43,6 @@ public class ArrayList<T>
     public int Size
     {
         get => size;
-        set => size = value;
     }
     public void Append(T value)
     {
