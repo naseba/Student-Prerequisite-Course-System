@@ -1,7 +1,12 @@
 ﻿
-public struct Course
+public class Course
 {
     public string Name;
+    public int TreeIndex;
+    Course()
+    {
+        TreeIndex = -1;
+    }
 }
 
 public struct Student
