@@ -24,18 +24,23 @@ public class ArrayList<T>
     public ArrayList()
     {
         count = 0;
-        capacity = 5;
-        arr = new T[5];
+        capacity = 0;
     }
-    public ArrayList(int IntialCapacity)
+    public ArrayList(int IntialCount)
     {
-        count = 0;
-        capacity = IntialCapacity;
-        arr = new T[IntialCapacity];
+        Count = IntialCount;
     }
     public int Count
     {
         get => count;
+        set
+        {
+            if(capacity < value)
+            {
+                Capacity = value;
+            }
+            count = value;
+        }
     }
     public int Capacity
     {
@@ -77,6 +82,16 @@ public class ArrayList<T>
             arr[i - 1] = arr[i];
         }
         count--;
+    }
+    public T[] ToArray()
+    {
+        if(count == 0)
+        {
+            return null;
+        }
+        T[] tmp = new T[count];
+        Array.ConstrainedCopy(arr, 0, tmp, 0, count);
+        return tmp;
     }
     public T this[int index]
     {
