@@ -8,10 +8,7 @@ public class ArrayList<T>
     int capacity;
     void Expand()
     {
-        T[] tmp = new T[capacity * 2];
-        Array.ConstrainedCopy(arr, 0, tmp, 0, capacity);
-        arr = tmp;
-        capacity *= 2;
+        Resize(capacity * 2);
     }
     void CheckIndex(int index)
     {
@@ -39,6 +36,13 @@ public class ArrayList<T>
         size = 0;
         capacity = IntialCapacity;
         arr = new T[IntialCapacity];
+    }
+    public void Resize(int NewSize)
+    {
+        T[] tmp = new T[NewSize];
+        Array.ConstrainedCopy(arr, 0, tmp, 0, Math.Min(size, NewSize));
+        arr = tmp;
+        capacity = NewSize;
     }
     public int Size
     {
