@@ -7,13 +7,6 @@ public class CourseTree
     ArrayList<ArrayList<int>> AdjacencyList;
     int count;
     int capacity;
-    void CheckCapacity()
-    {
-        if(count == capacity)
-        {
-            Capacity = capacity * 2;
-        }
-    }
     void CheckIndex(params int[] indecies)
     {
         foreach (int n in indecies)
@@ -36,19 +29,8 @@ public class CourseTree
     {
         get => count;
     }
-    public int Capacity
-    {
-        get => capacity;
-        set
-        {
-            AdjacencyList.Capacity = value;
-            Courses.Capacity = value;
-            capacity = value;
-        }
-    }
     public void AddCourse(Course c)
     {
-        CheckCapacity();
         c.TreeIndex = count;
         Courses.Append(c);
         AdjacencyList.Count++;
@@ -98,16 +80,17 @@ public class CourseTree
     }
     public void LoadFromFile(string[] filedata)
     {
-        Capacity = filedata.Length;
-        foreach(string s in filedata)
+        AdjacencyList.Count = filedata.Length;
+        for(int i = 0; i < filedata.Length; i++)
         {
-            string[] fields = s.Split(' ', '\0');
+            string[] fields = filedata[i].Split(' ', '\0');
             if (fields.Length <= 1) continue;
             Course c = FileOperations.CoursesFile.GetCourse(fields[0]);
+            c.TreeIndex = i;
             Courses.Append(c);
-            for(int i = 1; i < fields.Length; i++)
+            for(int j = 1; j < fields.Length; j++)
             {
-                AdjacencyList[c.TreeIndex].Append(int.Parse(fields[i]));
+                AdjacencyList[i].Append(int.Parse(fields[j]));
             }
         }
     }

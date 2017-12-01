@@ -25,10 +25,13 @@ public class ArrayList<T>
     {
         count = 0;
         capacity = 0;
+        arr = new T[2];
     }
     public ArrayList(int IntialCount)
     {
+        capacity = IntialCount;
         Count = IntialCount;
+        arr = new T[IntialCount];
     }
     public int Count
     {
