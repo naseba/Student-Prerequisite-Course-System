@@ -1,7 +1,7 @@
 ﻿
 public class Course
 {
-    public string Name;
+    public string Name, Description;
     public int TreeIndex;
     Course()
     {
